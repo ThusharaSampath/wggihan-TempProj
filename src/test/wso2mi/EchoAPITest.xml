@@ -1,0 +1,34 @@
+<unit-test>
+    <artifacts>
+        <test-artifact>
+            <artifact>src/main/wso2mi/artifacts/apis/EchoAPI.xml</artifact>
+        </test-artifact>
+    </artifacts>
+    <test-cases>
+        <test-case name="EchoAPITestCase">
+            <input>
+                <request-path>/data</request-path>
+                <request-method>POST</request-method>
+                <payload><![CDATA[{"empID":"12345"}]]></payload>
+            </input>
+            <assertions>
+                <assertEquals>
+                    <actual>$body</actual>
+                    <expected><![CDATA[{"originalPayload":{"empID":"12345"},"new":"12345"}]]></expected>
+                    <message>Response payload is not as expected</message>
+                </assertEquals>
+                <assertNotNull>
+                    <actual>$ctx:originalPayload</actual>
+                    <message>Original payload is null</message>
+                </assertNotNull>
+                <assertNotNull>
+                    <actual>$ctx:responsePayload</actual>
+                    <message>Response payload is null</message>
+                </assertNotNull>
+            </assertions>
+        </test-case>
+    </test-cases>
+    <mock-services>
+        <!-- Mock services can be defined here if needed -->
+    </mock-services>
+</unit-test>

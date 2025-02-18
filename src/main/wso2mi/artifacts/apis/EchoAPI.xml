@@ -1,0 +1,32 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="EchoAPI" context="/echo">
+    <resource methods="POST" uri-template="/data">
+        <inSequence>
+            <property name="originalPayload" scope="default" type="JSON" expression="json-eval($.)"/>
+            <call>
+                <endpoint key="Mocky"/>
+            </call>
+            <payloadFactory media-type="json" template-type="default">
+                <format>{"Id" : "$1"}</format>
+                <args>
+                    <arg expression="json-eval($.empID)" evaluator="json"/>
+                </args>
+            </payloadFactory>
+            <property name="responsePayload" scope="default" type="JSON" expression="json-eval($.)"/><!-- Set the content type of the message to application/json -->
+            <!-- Add a new JSON entry using the enrich mediator -->
+            <enrich description="">
+                <source clone="false" property="originalPayload" type="property"/>
+                <target action="replace" type="body"/>
+            </enrich>
+            <enrich description="">
+                <source clone="true" property="responsePayload" type="property"/>
+                <target action="child" xpath="json-eval($.)"/>
+            </enrich>
+            <datamapper config="gov:datamapper/NameMerger/NameMerger.dmc" inputSchema="gov:datamapper/NameMerger/NameMerger_inputSchema.json" outputSchema="gov:datamapper/NameMerger/NameMerger_outputSchema.json"/><echo_service.postRespond configKey="LocalEchoService">
+    <responseVariable >echo_service_postRespond_745</responseVariable>
+    <overwriteBody >false</overwriteBody>
+</echo_service.postRespond>
+<!-- Respond with the enriched JSON payload -->
+            <respond/>
+        </inSequence>
+    </resource>
+</api>

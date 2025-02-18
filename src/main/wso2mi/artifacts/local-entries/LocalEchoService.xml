@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localEntry key="LocalEchoService" xmlns="http://ws.apache.org/ns/synapse">
+  <echo_service.init>
+    <connectionType>ECHO_SERVICE</connectionType>
+    <base>http://localhost:9090/echo</base>
+    <name>LocalEchoService</name>
+  </echo_service.init>
+</localEntry>

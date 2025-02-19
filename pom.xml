@@ -117,7 +117,7 @@
               </execution>
             </executions>
           </plugin>
-          <!--plugin>
+          <plugin>
             <groupId>org.wso2.maven</groupId>
             <artifactId>vscode-car-plugin</artifactId>
             <version>${car.plugin.version}</version>
@@ -131,7 +131,7 @@
                 <configuration/>
               </execution>
             </executions>
-          </plugin-->
+          </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-install-plugin</artifactId>

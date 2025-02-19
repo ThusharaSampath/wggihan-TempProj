@@ -102,20 +102,6 @@
             </configuration>
           </plugin>
           <plugin>
-            <groupId>org.wso2.maven</groupId>
-            <artifactId>vscode-car-plugin</artifactId>
-            <version>5.2.60</version>
-            <extensions>true</extensions>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>car</goal>
-                </goals>
-                <configuration/>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-install-plugin</artifactId>
             <version>2.5.2</version>
@@ -208,21 +194,6 @@
             </executions>
           </plugin>
           <!-- Build the Carbon Application -->
-          <plugin>
-            <groupId>org.wso2.maven</groupId>
-            <artifactId>vscode-car-plugin</artifactId>
-            <version>5.2.60</version>
-            <extensions>true</extensions>
-            <executions>
-              <execution>
-                <phase>generate-sources</phase>
-                <goals>
-                  <goal>car</goal>
-                </goals>
-                <configuration></configuration>
-              </execution>
-            </executions>
-          </plugin>
           <!-- Download dependency jars to the deployment/libs folder -->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
